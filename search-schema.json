@@ -1,0 +1,73 @@
+{
+  "allOf": [
+    {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "A freeform text query."
+        }, // query
+        "filters": {
+          "type": "object"
+        }, // filters
+        "view": {
+          "type": "object",
+          "properties": {
+            "limit": {
+              "type": "integer"
+            },
+            "offset": {
+              "type": "integer"
+            },
+            "showFacets": {
+              "description": "A boolean value, or an object determining if faceting should be enabled. `true` means that default facet info is included, `false` means that facet info is not included.\n<br>Default value is `false`.\n",
+              "type": "object",
+              "properties": {
+                "facets": {
+                  "type": "array",
+                  "description": "A string or an array of strings that determines which facets should be included in the response. Dot separated facets like `categories.id` can be matched with just a part of the full value like `categories`. All facets are returned by default.\n",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "limit": {
+                  "description": "Defines how many categories should be returned. Categories with most hits are prioritized.\n<br>Default value is 250.\n",
+                  "type": "integer",
+                  "default": 250
+                }
+              }
+            },
+            "sortBy": {
+              "type": "array",
+              "items": {
+                "type": "object"
+              }
+            }
+          }
+        } // view
+      }
+    }, // object
+    {
+      "type": "object",
+      "properties": {
+        "filters": {
+          "type": "object",
+          "properties": {
+            "ids": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "url": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    } // object
+  ]
+}
